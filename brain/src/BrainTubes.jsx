@@ -7,37 +7,8 @@ import * as THREE from 'three';
 import {extend} from '@react-three/fiber';
 import {useRef} from "react";
 import {shaderMaterial} from '@react-three/drei'
+import {Tubes} from './BrainTubes.jsx'
 
-const randomRange = (min, max) => Math.random() * (max - min) + min;
-
-let curves = []
-for (let i = 0; i < 100; i++){
-    let points = [];
-    let length = randomRange(0.1, 1);
-    for (let j = 0; j < 100; j++) {
-        points.push(new THREE.Vector3().setFromSphericalCoords(
-            1,
-            Math.PI - (j / 100) * Math.PI*length,
-            (i / 100) * Math.PI * 2
-        )
-        );
-    }
-    let tempcurve = new THREE.CatmullRomCurve3(points);
-    curves.push(tempcurve);
-}
-
-let brainCurves = []
-
-PATHS.forEach((path)=>{
-    let points = []
-    for(let i = 0; i<path.length; i+=3) {
-        points.push(new THREE.Vector3(path[i],path[i+1], path[i+2]))
-    }
-    let tempcurve = new THREE.CatmullRomCurve3(points)
-    brainCurves.push(tempcurve)
-})
-
-// eslint-disable-next-line react/prop-types
 function Tube({curve}) {
 
     const brainMat = useRef()
@@ -96,25 +67,13 @@ extend({BrainMaterial})
     );
 }
 
-function Tubes(allthecurve){
+export function Tubes(allthecurve){
 
     return(
         <>
-            {brainCurves.map((curve, index)=>(
+            {allthecurve.map((curve, index)=>(
                 <Tube curve={curve} key={index}/>
     ))}
         </>
     )
 }
-
-export default function App() {
-    return <Canvas camera={{position:[0,0,0.2], near:0.001, far: 5}}>
-        <color attach={"background"} args={["black"]}/>
-        <ambientLight></ambientLight>
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <pointLight position={[10, 10, 10]}/>
-        <Tubes allthecurves={brainCurves}></Tubes>
-        <OrbitControls/>
-    </Canvas>
-}
-
