@@ -1,8 +1,10 @@
-# React + Vite
+<h1>Brain Effect in WebGL and ThreeJS</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A representation of a brain in ThreeJS and React that offers a 3D rendering as well as a neural effect that passes through the different strokes created using an SVG. The same SVG that is present on the BlueYard site.
+For the design all the credit goes to [Yuri Artiukh](https://www.youtube.com/watch?v=OCjwL5QbiMg) who during a stream tried to recreate this shape and the effect associated with it on the agency's website. As I am new to the field, relying on his work allowed me to recreate the effect on my side by better understanding how WebGL works and the technologies associated with it, generally such as ThreeJS.
+<h3> Preview </h3>
+<hr>
+<video width="100%" height="auto" controls>
+  <source src="/preview/capture.mov" type="video/quicktime">
+  Your browser does not support the video tag.
+</video>
